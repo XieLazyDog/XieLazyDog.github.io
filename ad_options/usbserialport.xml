@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<root>
-<enabled>true</enabled>
-<appid>1101152570</appid>
-<splash>8863364436303842593</splash>
+<root appid="1101152570">
+    
+<splash en="true"  posid="8863364436303842593" />
+
 </root>
