@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>SingleLED</title>
+
+<style>
+	
+	p .connectp {
+		padding: 50px;
+		text-align : center;
+		
+	}
+	
+	</style>	
+	
+</head>
+
+<body>
+<h1>Single LED Control with BlueTooth</h1>
+	<h2>with BTMCU the app for Android</h2>
+	<h3>Video <a href="https://youtu.be/cJiL4ecg4PA" target="_blank">here</a></h3>
+<img src="logo.jpg" width="540" height="360" alt=""/>
+
+	<h2>Required parts:</h2>
+	<ul>
+		<li>Bluetooth Module HC-06 or HC-05</li>
+		<li>Arduino Board</li>
+		<li>LED</li>
+		<li>Your Phone</li>
+	</ul>
+<h2>Steps:</h2>
+	<ol>
+		<p>
+				
+		<li><h3>Connect Parts</h3></li>
+			<p class="connectp">
+				
+		<img src="connct.jpg" width="480" height="480" class="connect">
+		</p>
+		
+		<ul>
+		<li>Conenct Bluetooth module to Arduino Board. Pin1 on board to RX on Bluetooth module. Pin0->TX</li>
+		<li>Connect LED to Arduino Board. Connect the longer end of the LED to the digital output pin(Pin53 used for this time)，and the shorter end to GND </li>
+		</ul>
+		</p>
+	<p>
+		<li><h3>Install and open BTMCU</h3></li>
+		
+	<p class="connectp">
+	<img src="app_logo.jpg" width="320" height="320">
+	</p>
+			Get BTMCU in <a href="https://play.google.com/store/apps/details?id=xnj.lazydog.btcontroller" target="_blank">google play store</a>
+		</p>
+		
+	<li><h3>Configure Button</h3></li>
+	<p>The BTMCU support Button Control,it has 11 customizable buttons.</p><img src="button1.jpg" width="280" height="480">
+	<img src="edit.jpg" width="280" height="480">
+	<p>Click the editing switch,then press the button to customize buttons</p><img src="on_edit.jpg" width="280" height="480"><img src="off_edit.jpg" width="280" height="480">
+	<p>By clicking the button in editing mode, you can get the dialog to edit them.You can edit the name and data of each button.One thing to note is that. Each time the button is pressed, two events, 'Press' and 'Release’ are triggered. You can edit the corresponding data separately.
+	</p>
+	<p>At this time,I used two buttons to control the light.When button 'ON' pressed, character 'o' will be transmitted to arduino,while 'n' ,or other characters for 'OFF'</p>
+	
+	<li><h3>Program Arduino</h3></li>
+	<p>Now it's time to program the Arduino</p><img src="code.jpg" width="240" height="320">
+	<p>The code is very simple,you don't even need the src file</p>
+	
+	<li><h3>Connect and play</h3></li>
+	<p>The devices page</p><img src="device.jpg" width="280" height="480">
+	
+	<p>The figure above shows that the Bluetooth device HC-06 is connected.To connect a device, the correct way to do this is to click the "+" sign on the right side of the device.When the device is successfully connected, the "+" flag will change to the "X" mark.  </p>
+	<p>All the work is done, now you can switch the LED on the button page. Hope you have fun !!!</p>
+	</ol>
+</body>
+</html>
