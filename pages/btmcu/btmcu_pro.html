@@ -20,7 +20,8 @@
 		}
 		
 		h1{
-			margin: 10px;
+			margin-top: 10px;
+			margin-bottom: 10px;
 			font-size: 22px;
 			font-weight: bolder;
 		}
@@ -29,17 +30,19 @@
 			font-size: 15px;
 			font-weight: normal;
 			
-			color: #47B2F5
+			color: #47B2B5
 		}
 		
 		
 		#top_back{
+			box-shadow: 6px 6px 3px;
 			background-color:#C9CACA;
 			padding: 10px;
 			text-align: center;
 		    
 		}
 		#bot_back{
+			box-shadow: 6px -6px 3px;
 			background-color:#C9CACA;
 			padding: 10px;
 		}
@@ -55,6 +58,21 @@
 		a{
 			text-decoration: none;
 		}
+		.content{
+		
+			
+			padding:20px;
+		}
+		.img{
+			margin: 10px;
+			text-align: center;
+		}
+		
+		.para{
+		    text-indent: 2em;
+			
+		}
+		
 		
 	</style>
 	
@@ -71,15 +89,17 @@
 	<li><p><h1>Introduction</h1></p>
 		
 		<ul>
-			<li><a href="#intr1"><h2>Features</h2></a> </li>
-	        <li><a href="#intr1"><h2>Special Note</h2></a> </li>
+			<li><a href="#features"><h2>Features</h2></a> </li>
+	        <li><a href="#note"><h2>Special Note</h2></a> </li>
 	</ul>	
 		</li>
 		<li><p><h1>How to connect devices</h1></p>
 		<ul>
-			<li><a href="#intr1"><h2>Scan</h2></a> </li>
-	        <li><a href="#intr1"><h2>Connct</h2></a> </li>
-			<li><a href="#intr1"><h2>Device Filter</h2></a> </li>
+			<li><a href="#scan"><h2>Scan</h2></a> </li>
+	        <li><a href="#connect">
+	          <h2>Pair and Connect</h2>
+	        </a> </li>
+			<li><a href="#filter"><h2>Device Filter</h2></a> </li>
 	</ul>	
 		</li>
 
@@ -87,10 +107,10 @@
       <h1>How to play in Professional mode</h1>
       </p>
 		<ul>
-			<li><a href="#intr1"><h2>New Project</h2></a> </li>
-	        <li><a href="#intr1"><h2>Set Communication Parameters</h2></a> </li>
-			<li><a href="#intr1"><h2>Edit Widgets </h2></a> </li>
-			<li><a href="#intr1"><h2>Run Project </h2></a> </li>
+			<li><a href="#newpro"><h2>New Project</h2></a> </li>
+	        <li><a href="#commpara"><h2>Set Communication Parameters</h2></a> </li>
+			<li><a href="#widgets"><h2>Edit Widgets </h2></a> </li>
+			<li><a href="#run"><h2>Run Project </h2></a> </li>
 	   </ul>	
 		</li>
 	
@@ -113,11 +133,65 @@
 			<li><a href="#intr1"><h2>Edit Buttons </h2></a> </li>
 	   </ul>	
 		</li>
-  
 	</ul>
+   <div class="content">
+	   
+    <p><a name="features"></a> <h1>Features</h1></p>
+<div class="img">
+    <img src="threefeatures.jpg" width="70%">
+</div>
+<p class="para">
+BTMCU is a powerful application based on the connection between the phone and the Bluetooth device. It has three very useful features:
+</p>
+<p class="para">
+
+	<ol>
+		<li>Command control<br>You can send a text instruction to the microcontroller and accept the data it returns.</li>
+		<li>Button control<br>You can send commands to the microcontroller by pressing buttons.</li>
+		<li>Professional control<br>You can customize the packet structure and widgets to achieve higher frequency data interaction.</li>
+</ol>
+</p>
+
+<p><a name="note"></a><h1>Special Note</h1></p>
+<p class="para">-This app is only for communication with classic Bluetooth modules. Support for BLE devices is not stable.</p>
+<p class="para">-This app requires location information permission to search for nearby Bluetooth devices. I won't collect your location.</p>
+<p class="para">-Please pay attention to the process of pairing when using the Bluetooth module for the first time.</p>
+  
+
+<p><a name="scan"></a><h1>Scan</h1></p><div class="img"> <img src="scan.jpg" width="40%"></div>
+<p class="para">Click the button to start scan.The discovered device will appear in the list above.If you want to stop it, just click the button again.</p>
+<p><a name="connect"></a><h1>Pair and Connect</h1></p><div class="img"> <img src="connect_1.jpg" width="30%"> <img src="pair.jpg" width="30%"></div>
+
+<p class="para">Click the "+" button to connect to the device.If you have already paired, you can connect directly. If your phone is not paired with this device, the ‘Pairing’ dialog will pop up in a few seconds.You need to type ‘1234’ or ‘0000’ to complete the pairing.</p>
+
+<div class="img"> <img src="connect_2.jpg" width="40%"> </div>
+<p class="para">After pairing for a few seconds, the system will notify you of the result of the match. You can click the '+' button again to connect the device if pairing succeeded.</p>
+
+<div class="img"> <img src="connect_3.jpg" width="40%"> </div>
+<p class="para">When the device is connected, the ‘+’ button will change to the ‘X’ button. You can click ‘X’ button to disconnect</p>
+
+<p><a name="filter"></a><h1>Devices Filter</h1></p><div class="img"> <img src="filter_1.jpg" width="30%"> <img src="filter_2.jpg" width="30%"></div>
+<div class="img"> 
+<img src="filter_3.jpg" width="30%">
+<img src="filter_4.jpg" width="30%">
+</div>
+
+
+<p><a name="newpro"></a><h1>New Project</h1></p><div class="img"> <img src="newpro_1.jpg" width="30%"> <img src="newpro_2.jpg" width="30%"> </div>
+<p><a name="commpara"></a><h1>Set Communication Parameters</h1></p><div class="img"> <img src="newpro_3.jpg" width="25%"> <img src="newpro_4.jpg" width="25%"> <img src="newpro_5.jpg" width="25%"></div>
+
+
+<div class="img">  <img src="newpro_6.jpg" width="25%"> <img src="newpro_7.jpg" width="25%"> <img src="newpro_8.jpg" width="25%"></div>
+
+
+<p><a name="widgets"></a><h1>Edit Widgets</h1></p><div class="img"> <img src="filter_1.jpg" width="30%"> <img src="filter_2.jpg" width="30%"></div>
+
+<p><a name="run"></a><h1>Run Project</h1></p><div class="img"> <img src="filter_1.jpg" width="30%"> <img src="filter_2.jpg" width="30%"></div>
+
+
+</div>
 
 <div id="bot_back">
-		
 	 <div>
       <p>
       <h1 style="color: #333333">My Other Useful Apps</h1>
@@ -138,17 +212,16 @@
 			<td>
 			<a href="https://play.google.com/store/apps/details?id=ls.xnj.meetingmachine" target="_blank" id="install">	
 			 <img src="../myapps_logo/usbcam.png" width="80" height="80" alt=""/><br>USB Camera
-				</a>
+			  </a>
 			</td>
 			<td>
 				<a href="https://play.google.com/store/apps/details?id=xnj.lazydog.firefly" target="_blank" id="install">
 			 <img src="../myapps_logo/light.png" width="80" height="80" alt=""/><br>Flashlight
 				</a>
 			</td>
-			</tr>
+		  </tr>
 		</table>	
 </div>
-    </div>
-	
+</div>
 </body>
 </html>
