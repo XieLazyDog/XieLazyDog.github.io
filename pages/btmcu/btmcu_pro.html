@@ -3,16 +3,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta charset="UTF-8">
-<title>BTMCU_Professional</title>
+<title>BTMCU User Manual</title>
 
 	<style>
 	
 	    #install
 		{
 			color: #47B2F5;
-			text-decoration: none;
 			font-size: 16px;
-			
+			font-weight: bolder;
 		}
 		* {
 			font-family:Arial;
@@ -36,14 +35,14 @@
 		
 		#top_back{
 		
-			box-shadow: 6px 6px 3px;
+			
 			background-color:#C9CACA;
 			padding: 10px;
 			text-align: center;
 		    
 		}
 		#bot_back{
-			box-shadow: 6px -6px 3px;
+			
 			background-color:#555555;
 			padding: 10px;
 			margin-top: 20px;
@@ -120,6 +119,7 @@
 	        <li><a href="#commpara"><h2>Set Communication Parameters</h2></a> </li>
 			<li><a href="#widgets"><h2>Edit Widgets </h2></a> </li>
 			<li><a href="#run"><h2>Run Project </h2></a> </li>
+			<li><a href="#code"><h2 style="color: #44CCFF">Make it work with Arduino (support code) </h2></a> </li>
 	   </ul>	
 		</li>
 	
@@ -128,18 +128,18 @@
 		<a href="#howcommand"><h1>How to play in Command mode</h1></a>
       </p>
 		<ul>
-			<li><a href="#intr1"><h2>Send and Receive</h2></a> </li>
-	        <li><a href="#intr1"><h2>Line Breaks Replacement</h2></a> </li>
-			<li><a href="#intr1"><h2>Top/Botton/Clear</h2></a> </li>
+			<li><a href="#sendrecv"><h2>Send and Receive</h2></a> </li>
+	        <li><a href="#linebreak"><h2>Line Breaks Replacement</h2></a> </li>
+			<li><a href="#topbot"><h2>Top/Botton/Clear</h2></a> </li>
 	   </ul>	
 		</li>
   <li><p>
 	  <a href="#howbutton"><h1>How to play with Buttons</h1></a>
       </p>
 		<ul>
-			<li><a href="#intr1"><h2>Press and Release</h2></a> </li>
-	        <li><a href="#intr1"><h2>Editing Switch</h2></a> </li>
-			<li><a href="#intr1"><h2>Edit Buttons </h2></a> </li>
+			<li><a href="#pressrelease"><h2>Press and Release</h2></a> </li>
+	        <li><a href="#editing"><h2>Editing Mode</h2></a> </li>
+			<li><a href="#edit"><h2>Edit Buttons </h2></a> </li>
 	   </ul>	
 		</li>
 	</ul>
@@ -155,7 +155,7 @@
 		
     <p><a name="features"></a> <h1>Features</h1></p>
 <div class="img">
-    <img style="max-width: 600px" src="threefeatures.jpg" width="70%">
+    <img style="max-width: 600px" src="threefeatures.jpg" width="90%">
 </div>
 <p class="para">
 BTMCU is a powerful application based on the connection between the phone and the Bluetooth device. It has three very useful features:
@@ -172,16 +172,16 @@ BTMCU is a powerful application based on the connection between the phone and th
 </p>
 
 <p><a name="note"></a><h1>Special Note</h1></p>
-<p class="para">-This app is only for communication with classic Bluetooth modules. Support for BLE devices is not stable.</p>
-<p class="para">-This app requires location information permission to search for nearby Bluetooth devices. I won't collect your location.</p>
+<p class="para">-This app is only for communication with classic Bluetooth modules. Support for BLE devices is not stable.</p><br>
+<p class="para">-This app requires location information permission to search for nearby Bluetooth devices. I won't collect your location.</p><br>
 <p class="para">-Please pay attention to the process of pairing when using the Bluetooth module for the first time.</p>
   
 <p><a name="howconnect"></a><h1 style="font-size: 28px">How to connect devices</h1></p>
   
 	<p class="para">
-     I designed a Bluetooth scanning and connection interface that makes it easy to connect to Bluetooth devices. In addition, I also designed the fnuction to display only devices with a specific name, which you can use to exclude unrelated Bluetooth devices.</p>
+     I designed a Bluetooth scanning and connection interface that makes it easy to connect to Bluetooth devices. In addition, I also designed the function to display only devices with a specific name, which you can use to exclude unrelated Bluetooth devices.</p>
 <p class="para">
-	Currently, BTMCU only supports the HC-05/HC-06 and JDY series of Bluetooth modules. Since BLE devices communicate with classic Bluetooth devices differently, it is difficult for me to write related communication programs.</p>
+	Currently, BTMCU only supports the HC-05/HC-06 and JDY series of Bluetooth modules. Since BLE devices communicate with classic Bluetooth devices differently.</p>
 
 
 <p><a name="scan"></a><h1>Scan</h1></p><div class="img"> <img src="scan.jpg" width="50%"></div>
@@ -208,56 +208,124 @@ BTMCU is a powerful application based on the connection between the phone and th
 
 
 <p><a name="howpro"></a><h1 style="font-size: 28px">How to play in professional mode</h1></p>
-  
+ <div class="img">
+<img style="max-width: 1500px" src="diagram.jpg" width="100%"></div>
 	<p class="para">
-     I designed a Bluetooth scanning and connection interface that makes it easy to connect to Bluetooth devices. In addition, I also designed the fnuction to display only devices with a specific name, which you can use to exclude unrelated Bluetooth devices.</p>
+    In professional mode, control commands and sensor status are transmitted in the form of data packets. The structure of the data package is shown in the figure above, and the part we need to configure is the original data part. Five types of variables are supported in this application. The number of each variable can be set separately. If you want to control two LED lights, you just need to add two bools to the 'Packet to send'in <a href="#commpara" style="color: #45B2BF">Communication page </a>.
+    </p>
 <p class="para">
-	Currently, BTMCU only supports the HC-05/HC-06 and JDY series of Bluetooth modules. Since BLE devices communicate with classic Bluetooth devices differently, it is difficult for me to write related communication programs.</p>
+	Packets are sent at specified intervals which can be changed <a href="#interval" style="color: #45B2BF">here</a>. Intensively transmitted packets will make the control smoother, but it will increase the burden on the microcontroller. It is also limited by the baud rate of Serial port communication between Bluetooth module and microcontroller.</p>
 
 
-<p><a name="newpro"></a><h1>New Project</h1></p><div class="img"> <img src="newpro_1.jpg" width="40%"> <img src="newpro_2.jpg" width="40%"> </div>
+<p><a name="newpro"></a><h1>New Project</h1></p><div class="img"> <img src="newpro_1.jpg" width="40%"> <img src="newpro_2.jpg" width="40%"></div>
 
 <p class="para">In professional mode, you need to create a new project to define your own control interface.The project you created will always be in your phone, and you can create as many projects as your phone's storage space allows.</p>
 <p><a name="commpara"></a><h1>Set Communication Parameters</h1></p>
 <p class="para">Setting communication parameters is very necessary if you want to run your project as you wish.</p>
 
-<div class="img"> <img src="newpro_3.jpg" width="30%"> <img src="newpro_4.jpg" width="30%"> <img src="newpro_5.jpg" width="30%"></div>
+<div class="img"> <img src="newpro_3.jpg" width="50%"></div>
+<div class="img"> <img src="newpro_4.jpg" width="40%"> <img src="newpro_5.jpg" width="40%"></div>
+<p class="para">You can customize the structure of data packets in Communication page. All you need to do is press the '+' button and name the new variable. If you want to change variable's name, click the variable circle to select it and click the rename button.</p>
+<div class="img">  <img src="newpro_6.jpg" width="40%"> <img src="newpro_7.jpg" width="40%"></div>
+<p class="para">You need to customize the 'Packet to receive' if you want to receive the sensor data from microcontroller.</p>
+
+<a name="interval"><a/>
+<div class="img">  <img src="newpro_8.jpg" width="50%"></div>
+<p class="para">You can specify when the phone will send the packet. If you enable the "Send when widget is manipulated" mode, the phone will not send packets if the variables have not been changed. This will greatly reduce the burden of communication. </p>
+<p><a name="widgets"></a><h1>Edit Widgets</h1></p><div class="img"> <img src="widget_1.jpg" width="40%"> <img src="widget_2.jpg" width="40%"></div>
+<p class="para">The coolest thing about BTMCU is its widgets editing.To start editing, you need to add a widget.I have designed 10 kinds of widgets so far. You will use these widgets to set variables to control targets. </p>
 
 
+<div class="img"><img src="widget_3.jpg" width="50%"> <img src="widget_4.jpg" width="50%"></div>
+<p class="para">The 'Link' dialog will appear after you select a widget. This is the necessary step to bind the variable to the widget. You can locate this variable by its direction, type and name.</p>
 
-<div class="img">  <img src="newpro_6.jpg" width="30%"> <img src="newpro_7.jpg" width="30%"> <img src="newpro_8.jpg" width="30%"></div>
+<div class="img"> <img src="widget_5.jpg" width="50%"> <img src="widget_6.jpg" width="50%"></div>
+<p class="para">Then you need to get the special settings configured in next dialog. Special settings vary depending on the type of widget. </p>
 
+<div class="img"><img src="widget_7.jpg" width="50%"> <img src="widget_8.jpg" width="50%"> </div>
+<p class="para">After all the settings, the layout of widget can be customized. You can edit the position,size and rotation of selected widget. You can see the layout information of the widget in the lower left corner.  </p>
 
+<div class="img"><img src="widget_9.jpg" width="30%"> </div>
 
-<p><a name="widgets"></a><h1>Edit Widgets</h1></p><div class="img"> <img src="widget_1.jpg" width="30%"> <img src="widget_2.jpg" width="30%"><img src="widget_3.jpg" width="30%"></div>
+<p class="para">Drag the widget to move it.</p>
 
-<div class="img"><img src="widget_4.jpg" width="30%"> <img src="widget_5.jpg" width="30%"> <img src="widget_6.jpg" width="30%"></div>
+<div class="img"><img src="widget_10.jpg" width="30%"> <img src="widget_11.jpg" width="30%"></div>
+<p class="para">Drag the lower right corner of the widget to resize it.</p>
 
-<div class="img"><img src="widget_7.jpg" width="30%"> <img src="widget_8.jpg" width="30%"> <img src="widget_9.jpg" width="30%"></div>
+<div class="img"><img src="widget_12.jpg" width="30%"></div>
 
-<div class="img"><img src="widget_10.jpg" width="30%"> <img src="widget_11.jpg" width="30%"> <img src="widget_12.jpg" width="30%"></div>
+<p class="para">Press the widget then drag in one direction to rotate it.</p>
+
 <div class="img"><img src="widget_13.jpg" width="40%"></div>
 
+<p class="para">If you want to change the link or special settings, just click the button above.</p>
 
 <p><a name="run"></a><h1>Run Project</h1></p><div class="img"><img src="run_1.jpg" width="30%"> <img src="run_2.jpg" width="30%"> <img src="run_3.jpg" width="30%"></div>
 
 
-</div>
+<p><a name="code"></a><h1>Make it work with Arduino</h1></p>
+
+<p class="para">I won't show you about the hardware connection. <a href="https://github.com/XieLazyDog/Arduino_ValuePack/blob/master/src.cpp" target="_blank" style="color: #44b2ff">Here</a> is the code that runs on the Arduino to communicate with the BTMCU. <b>You can download it and paste it into your code.</b></p>
+<br>
+<p class="para"> It takes only four steps to implement your own control system on the microcontroller.</p>
+<br>
+<p class="para">1.Define numbers of variables in packets.</p>
+<div class="img"><img style="max-width: 1000px" src="define.jpg" width="70%"></div>
+<br>
+<p class="para">2.Initialize with the serialport and baudrate.</p>
+<br>
+<p class="para">3.recvPack() and read value by 'value = rxPack.*' ('*' is bools[n]/bytes[n]/shorts[n]/integers[n]/floats[n])</p>
+<br>
+<p class="para">4.Write value by 'txPack.* = value' and sendPack() ('*' is bools[n]/bytes[n]/shorts[n]/integers[n]/floats[n])</p>
+<div class="img"><img style="max-width: 1000px" src="implement.jpg" width="70%"></div>
+
+
+
+<p><a name="howcommand"></a><h1 style="font-size: 28px">How to play in command mode</h1></p>
+
+<p><a name="sendrecv"></a><h1>Send and Receive</h1></p><div class="img"> <img src="sendrecv.jpg" width="50%"></div>
+
+
+<p><a name="linebreak"></a><h1>Line Breaks Replacement</h1></p>
+<p class="para">When you press the Enter key on the input method keyboard, you actually send the '\n' character. However, '\r \n' is required for many occasions, for which I added the line breaks replacement feature.</p>
+<div class="img"> <img src="linebreak_1.jpg" width="40%"><img src="linebreak_2.jpg" width="40%"> </div>
+<div class="img"> <img src="linebreak_3.jpg" width="40%"> <img src="linebreak_4.jpg" width="40%"></div>
+
+
+<p><a name="topbot"></a><h1>Top/Bottom/Clear</h1></p>
+<p class="para">Three convenient buttons for browsing data records.</p>
+<div class="img"> <img src="topbot.jpg" width="50%"></div>
+
+
+
+<p><a name="howbutton"></a><h1 style="font-size: 28px">How to play in button mode</h1></p>
+
+<p><a name="pressrelease"></a><h1>Press and Release</h1></p><div class="img"> <img src="button_1.jpg" width="40%"> <img src="button_2.jpg" width="40%"></div>
+<p class="para">There are 11 customizable buttons in this app. For each button, two different sets of data can be sent based on the event. You can set the corresponding data to be sent when the button is pressed and released.</p>
+
+<p><a name="editing"></a><h1>Editing Mode</h1></p>
+<div class="img"> <img src="button_3.jpg" width="50%"></div>
+<p class="para">You can turn edit mode on and off by clicking the switch at the bottom right. When you click the button in editing mode, the dialog of button settings will pop up.</p>
+
+<p><a name="edit"></a><h1>Edit Buttons</h1></p>
+<div class="img"> <img src="button_4.jpg" width="50%"></div>
 
 <div>
-	<p class="para">
-	Author:
+  <p>
+	<h1 style="color: #45b2ff">
+	Request
+	</h1>	
 	</p>
 	<p class="para">
-	Editing this entire manual was a very time consuming task that took me three full days. If you feel that what I am doing is helpful to you, please install the application below to support me. I would be very grateful if you took the time to rate my app!!!
+	Hey guys, I'm xlazydog, I love electronic design. I wrote this app for bluetooth control, and I very much hope that more people will liberate their time by using my app. Editing this entire manual was a very time consuming task that took me three full days. If you feel that what I am doing is helpful to you, please install the application below to support me. I would be very grateful if you took the time to rate my apps!!!
 	</p>
 </div>
-
+</div>
 
 <div id="bot_back">
 	 <div>
       <p>
-      <h1 style="color: #fff">My Other Apps</h1>
+      <h1 style="color: #fff">My Apps</h1>
       </p>
 		
     </div>
