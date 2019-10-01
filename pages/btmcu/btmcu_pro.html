@@ -35,6 +35,7 @@
 		
 		
 		#top_back{
+		
 			box-shadow: 6px 6px 3px;
 			background-color:#C9CACA;
 			padding: 10px;
@@ -43,8 +44,9 @@
 		}
 		#bot_back{
 			box-shadow: 6px -6px 3px;
-			background-color:#C9CACA;
+			background-color:#555555;
 			padding: 10px;
+			margin-top: 20px;
 		}
 		
 		td {
@@ -56,6 +58,7 @@
 		}
 		
 		a{
+			color: #333;
 			text-decoration: none;
 		}
 		.content{
@@ -65,7 +68,12 @@
 		}
 		.img{
 			margin: 10px;
+			
 			text-align: center;
+		}
+		img {
+			
+			max-width : 200px;
 		}
 		
 		.para{
@@ -77,23 +85,24 @@
 	</style>
 	
 	</head>
-<body>
+<body style="text-align: center">
+	<div style="max-width: 800px; margin: 0 auto" align="left">
 <div id="top_back">
 	<h1 style="font-size: 36px">BTMCU User Manual</h1>
 	<div class="logo">
- 	<a href="https://play.google.com/store/apps/details?id=xnj.lazydog.btcontroller" target="_blank" id="install"><img src="logo.jpg" width="230" height="200"> <div>Install in google play store</div></a> 
+ 	<a href="https://play.google.com/store/apps/details?id=xnj.lazydog.btcontroller" target="_blank" id="install"><img style="max-width: 400px" src="logo.jpg" width="230" height="200"> <div>INSTALL ME</div></a> 
 	</div>
 	</div>
 	
-	<ul>
-	<li><p><h1>Introduction</h1></p>
+	<ul style="width: 600px ">
+		<li><p><a href="#intro"><h1>Introduction</h1></a></p>
 		
 		<ul>
 			<li><a href="#features"><h2>Features</h2></a> </li>
 	        <li><a href="#note"><h2>Special Note</h2></a> </li>
 	</ul>	
 		</li>
-		<li><p><h1>How to connect devices</h1></p>
+		<li><p><a href="#howconnect"><h1>How to connect devices</h1></a></p>
 		<ul>
 			<li><a href="#scan"><h2>Scan</h2></a> </li>
 	        <li><a href="#connect">
@@ -104,7 +113,7 @@
 		</li>
 
     <li><p>
-      <h1>How to play in Professional mode</h1>
+		<a href="#howpro"><h1>How to play in Professional mode</h1></a>
       </p>
 		<ul>
 			<li><a href="#newpro"><h2>New Project</h2></a> </li>
@@ -116,7 +125,7 @@
 	
 	
     <li><p>
-      <h1>How to play in Command mode</h1>
+		<a href="#howcommand"><h1>How to play in Command mode</h1></a>
       </p>
 		<ul>
 			<li><a href="#intr1"><h2>Send and Receive</h2></a> </li>
@@ -125,7 +134,7 @@
 	   </ul>	
 		</li>
   <li><p>
-      <h1>How to play with Buttons</h1>
+	  <a href="#howbutton"><h1>How to play with Buttons</h1></a>
       </p>
 		<ul>
 			<li><a href="#intr1"><h2>Press and Release</h2></a> </li>
@@ -135,20 +144,30 @@
 		</li>
 	</ul>
    <div class="content">
-	   
+	<p><a name="intro"></a><h1 style="font-size: 28px">Introduction</h1></p>
+  
+	<p class="para">
+     BTMCU (Bluetooth controller for MCU) is a Bluetooth-based application for microcontroller control designed for electronic design enthusiasts.Its unique professional control mode has the characteristics of communication customization and control interface customization.</p>
+		
+	<p class="para">
+	 BTMCU's communication function is very powerful, it supports bidirectional transmission of 5 data types (boolean/byte/short/int/float) in professional mode. You can use BTMCU to do anything related to Bluetooth control, such as controlling LEDs, relays, servo motors, stepper motors, DC motors. At the same time, the sensor data can be transmitted back to the mobile phone, such as temperature, humidity, infrared, motor speed, accelerometer and gyroscope.
+</p>
+		
     <p><a name="features"></a> <h1>Features</h1></p>
 <div class="img">
-    <img src="threefeatures.jpg" width="70%">
+    <img style="max-width: 600px" src="threefeatures.jpg" width="70%">
 </div>
 <p class="para">
 BTMCU is a powerful application based on the connection between the phone and the Bluetooth device. It has three very useful features:
 </p>
 <p class="para">
-
+    <br>
 	<ol>
-		<li>Command control<br>You can send a text instruction to the microcontroller and accept the data it returns.</li>
-		<li>Button control<br>You can send commands to the microcontroller by pressing buttons.</li>
-		<li>Professional control<br>You can customize the packet structure and widgets to achieve higher frequency data interaction.</li>
+		<li>Command control<br>Sending text instructions to the microcontroller and receive the data it returns.</li>
+		<br>
+		<li>Button control<br>Sending commands to the microcontroller by pressing buttons.</li>
+		<br>
+		<li>Professional control<br>Customizing the packet structure and widgets to achieve higher standard control. If you want to know how it works in professional mode, click <a href="#howpro" style="color: #46b2bf">here</a>.</li>
 </ol>
 </p>
 
@@ -157,53 +176,88 @@ BTMCU is a powerful application based on the connection between the phone and th
 <p class="para">-This app requires location information permission to search for nearby Bluetooth devices. I won't collect your location.</p>
 <p class="para">-Please pay attention to the process of pairing when using the Bluetooth module for the first time.</p>
   
+<p><a name="howconnect"></a><h1 style="font-size: 28px">How to connect devices</h1></p>
+  
+	<p class="para">
+     I designed a Bluetooth scanning and connection interface that makes it easy to connect to Bluetooth devices. In addition, I also designed the fnuction to display only devices with a specific name, which you can use to exclude unrelated Bluetooth devices.</p>
+<p class="para">
+	Currently, BTMCU only supports the HC-05/HC-06 and JDY series of Bluetooth modules. Since BLE devices communicate with classic Bluetooth devices differently, it is difficult for me to write related communication programs.</p>
 
-<p><a name="scan"></a><h1>Scan</h1></p><div class="img"> <img src="scan.jpg" width="40%"></div>
+
+<p><a name="scan"></a><h1>Scan</h1></p><div class="img"> <img src="scan.jpg" width="50%"></div>
 <p class="para">Click the button to start scan.The discovered device will appear in the list above.If you want to stop it, just click the button again.</p>
-<p><a name="connect"></a><h1>Pair and Connect</h1></p><div class="img"> <img src="connect_1.jpg" width="30%"> <img src="pair.jpg" width="30%"></div>
+<p><a name="connect"></a><h1>Pair and Connect</h1></p><div class="img"> <img src="connect_1.jpg" width="40%"> <img src="pair.jpg" width="40%"></div>
 
 <p class="para">Click the "+" button to connect to the device.If you have already paired, you can connect directly. If your phone is not paired with this device, the ‘Pairing’ dialog will pop up in a few seconds.You need to type ‘1234’ or ‘0000’ to complete the pairing.</p>
 
-<div class="img"> <img src="connect_2.jpg" width="40%"> </div>
+<div class="img"> <img src="connect_2.jpg" width="50%"> </div>
 <p class="para">After pairing for a few seconds, the system will notify you of the result of the match. You can click the '+' button again to connect the device if pairing succeeded.</p>
 
-<div class="img"> <img src="connect_3.jpg" width="40%"> </div>
+<div class="img"> <img src="connect_3.jpg" width="50%"> </div>
 <p class="para">When the device is connected, the ‘+’ button will change to the ‘X’ button. You can click ‘X’ button to disconnect</p>
 
-<p><a name="filter"></a><h1>Devices Filter</h1></p><div class="img"> <img src="filter_1.jpg" width="30%"><img src="filter_2.jpg" width="30%"></div>
+<p><a name="filter"></a><h1>Devices Filter</h1></p><div class="img"> <img src="filter_1.jpg" width="40%"> <img src="filter_2.jpg" width="40%"></div>
+
+<p class="para">Input a part of the name of target device.</p>
+
 <div class="img"> 
-<img src="filter_3.jpg" width="30%">
-<img src="filter_4.jpg" width="30%">
+<img src="filter_3.jpg" width="40%">
+<img src="filter_4.jpg" width="40%">
+</div>
+<p class="para">Turn on the switch and scan, you will find that only the target device is visible.</p>
+
+
+<p><a name="howpro"></a><h1 style="font-size: 28px">How to play in professional mode</h1></p>
+  
+	<p class="para">
+     I designed a Bluetooth scanning and connection interface that makes it easy to connect to Bluetooth devices. In addition, I also designed the fnuction to display only devices with a specific name, which you can use to exclude unrelated Bluetooth devices.</p>
+<p class="para">
+	Currently, BTMCU only supports the HC-05/HC-06 and JDY series of Bluetooth modules. Since BLE devices communicate with classic Bluetooth devices differently, it is difficult for me to write related communication programs.</p>
+
+
+<p><a name="newpro"></a><h1>New Project</h1></p><div class="img"> <img src="newpro_1.jpg" width="40%"> <img src="newpro_2.jpg" width="40%"> </div>
+
+<p class="para">In professional mode, you need to create a new project to define your own control interface.The project you created will always be in your phone, and you can create as many projects as your phone's storage space allows.</p>
+<p><a name="commpara"></a><h1>Set Communication Parameters</h1></p>
+<p class="para">Setting communication parameters is very necessary if you want to run your project as you wish.</p>
+
+<div class="img"> <img src="newpro_3.jpg" width="30%"> <img src="newpro_4.jpg" width="30%"> <img src="newpro_5.jpg" width="30%"></div>
+
+
+
+<div class="img">  <img src="newpro_6.jpg" width="30%"> <img src="newpro_7.jpg" width="30%"> <img src="newpro_8.jpg" width="30%"></div>
+
+
+
+<p><a name="widgets"></a><h1>Edit Widgets</h1></p><div class="img"> <img src="widget_1.jpg" width="30%"> <img src="widget_2.jpg" width="30%"><img src="widget_3.jpg" width="30%"></div>
+
+<div class="img"><img src="widget_4.jpg" width="30%"> <img src="widget_5.jpg" width="30%"> <img src="widget_6.jpg" width="30%"></div>
+
+<div class="img"><img src="widget_7.jpg" width="30%"> <img src="widget_8.jpg" width="30%"> <img src="widget_9.jpg" width="30%"></div>
+
+<div class="img"><img src="widget_10.jpg" width="30%"> <img src="widget_11.jpg" width="30%"> <img src="widget_12.jpg" width="30%"></div>
+<div class="img"><img src="widget_13.jpg" width="40%"></div>
+
+
+<p><a name="run"></a><h1>Run Project</h1></p><div class="img"><img src="run_1.jpg" width="30%"> <img src="run_2.jpg" width="30%"> <img src="run_3.jpg" width="30%"></div>
+
+
 </div>
 
-
-<p><a name="newpro"></a><h1>New Project</h1></p><div class="img"> <img src="newpro_1.jpg" width="30%"> <img src="newpro_2.jpg" width="30%"> </div>
-<p><a name="commpara"></a><h1>Set Communication Parameters</h1></p><div class="img"> <img src="newpro_3.jpg" width="25%"> <img src="newpro_4.jpg" width="25%"> <img src="newpro_5.jpg" width="25%"></div>
-
-
-<div class="img">  <img src="newpro_6.jpg" width="25%"> <img src="newpro_7.jpg" width="25%"> <img src="newpro_8.jpg" width="25%"></div>
-
-
-
-<p><a name="widgets"></a><h1>Edit Widgets</h1></p><div class="img"> <img src="widget_1.jpg" width="25%"> <img src="widget_2.jpg" width="25%"><img src="widget_3.jpg" width="25%"></div>
-
-<div class="img"><img src="widget_4.jpg" width="25%"> <img src="widget_5.jpg" width="25%"> <img src="widget_6.jpg" width="25%"></div>
-
-<div class="img"><img src="widget_7.jpg" width="25%"> <img src="widget_8.jpg" width="25%"> <img src="widget_9.jpg" width="25%"></div>
-
-<div class="img"><img src="widget_10.jpg" width="25%"><img src="widget_11.jpg" width="25%"> <img src="widget_12.jpg" width="25%"></div>
-<div class="img"><img src="widget_13.jpg" width="30%"></div>
-
-
-<p><a name="run"></a><h1>Run Project</h1></p><div class="img"><img src="run_1.jpg" width="25%"> <img src="run_2.jpg" width="25%"> <img src="run_3.jpg" width="25%"></div>
-
-
+<div>
+	<p class="para">
+	Author:
+	</p>
+	<p class="para">
+	Editing this entire manual was a very time consuming task that took me three full days. If you feel that what I am doing is helpful to you, please install the application below to support me. I would be very grateful if you took the time to rate my app!!!
+	</p>
 </div>
+
 
 <div id="bot_back">
 	 <div>
       <p>
-      <h1 style="color: #333333">My Other Useful Apps</h1>
+      <h1 style="color: #fff">My Other Apps</h1>
       </p>
 		
     </div>
@@ -215,21 +269,22 @@ BTMCU is a powerful application based on the connection between the phone and th
 		<tr>
 			<td>
 			<a href="https://play.google.com/store/apps/details?id=xnj.lazydog.usbserialport" target="_blank" id="install">
-			<img src="../myapps_logo/spu.png" width="80" height="80" alt=""/><br>Serial Port
+			<img src="../myapps_logo/spu.png" width="30%" alt=""/><br>Serial Port
 			</a>	
 			</td>
 			<td>
 			<a href="https://play.google.com/store/apps/details?id=ls.xnj.meetingmachine" target="_blank" id="install">	
-			 <img src="../myapps_logo/usbcam.png" width="80" height="80" alt=""/><br>USB Camera
+			 <img src="../myapps_logo/usbcam.png" width="30%" alt=""/><br>USB Camera
 			  </a>
 			</td>
 			<td>
 				<a href="https://play.google.com/store/apps/details?id=xnj.lazydog.firefly" target="_blank" id="install">
-			 <img src="../myapps_logo/light.png" width="80" height="80" alt=""/><br>Flashlight
+			 <img src="../myapps_logo/light.png" width="30%"  alt=""/><br>Flashlight
 				</a>
 			</td>
 		  </tr>
 		</table>	
+</div>
 </div>
 </div>
 </body>
