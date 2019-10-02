@@ -15,6 +15,7 @@
 		}
 		* {
 			font-family:Arial;
+			
 			margin: 0px;
 		}
 		
@@ -88,7 +89,7 @@
 	
 	</head>
 <body style="text-align: center">
-	<div style="max-width: 800px; margin: 0 auto" align="left">
+	<div style="max-width: 750px; margin: auto" align="left">
 <div id="top_back">
 	<h1 style="font-size: 36px">BTMCU User Manual</h1>
 	<div class="logo">
@@ -96,7 +97,7 @@
 	</div>
 	</div>
 	
-	<ul style="width: 600px ">
+	<ul >
 		<li><p><a href="#intro"><h1>Introduction</h1></a></p>
 		
 		<ul>
@@ -232,8 +233,9 @@ BTMCU is a powerful application based on the connection between the phone and th
 <div class="img">  <img src="newpro_6.jpg" width="40%"> <img src="newpro_7.jpg" width="40%"></div>
 <p class="para">You need to customize the 'Packet to receive' if you want to receive the sensor data from microcontroller.</p>
 
-<a name="interval"><a/>
+<a name="interval"></a>
 <div class="img">  <img src="newpro_8.jpg" width="50%"></div>
+	
 <p class="para">You can specify when the phone will send the packet. If you enable the "Send when widget is manipulated" mode, the phone will not send packets if the variables have not been changed. This will greatly reduce the burden of communication. </p>
 <p><a name="widgets"></a><h1>Edit Widgets</h1></p><div class="img"> <img src="widget_1.jpg" width="40%"> <img src="widget_2.jpg" width="40%"></div>
 <p class="para">The coolest thing about BTMCU is its widgets editing.To start editing, you need to add a widget.I have designed 10 kinds of widgets so far. You will use these widgets to set variables to control targets. </p>
@@ -277,9 +279,9 @@ BTMCU is a powerful application based on the connection between the phone and th
 <br>
 <p class="para">2.Initialize with the serialport and baudrate.</p>
 <br>
-<p class="para">3.recvPack() and read value by 'value = rxPack.*' ('*' is bools[n]/bytes[n]/shorts[n]/integers[n]/floats[n])</p>
+<p class="para">3.recvPack() and read value by 'value = rxPack.*' ('*' can be bools[n]/ bytes[n]/ shorts[n]/ integers[n]/ floats[n])</p>
 <br>
-<p class="para">4.Write value by 'txPack.* = value' and sendPack() ('*' is bools[n]/bytes[n]/shorts[n]/integers[n]/floats[n])</p>
+<p class="para">4.Write value by 'txPack.* = value' and sendPack() ('*' can be bools[n]/ bytes[n]/ shorts[n]/ integers[n]/ floats[n])</p>
 <div class="img"><img style="max-width: 1000px" src="implement.jpg" width="70%"></div>
 
 
