@@ -4,11 +4,231 @@
 <head>
 <meta charset="UTF-8">
 <title>RGBLED</title>
+	
+	<style>
+	
+	    #install
+		{
+			color: #47B2F5;
+			font-size: 16px;
+			font-weight: bolder;
+		}
+		* {
+			font-family:Arial;
+			
+			margin: 0px;
+		}
+		
+		h1{
+			margin-top: 10px;
+			margin-bottom: 10px;
+			font-size: 25px;
+			font-weight: bolder;
+		}
+		h2{
+			margin: 5px;
+			font-size: 18px;
+			font-weight: normal;
+			
+			
+		}
+		
+		
+		#top_back{
+		
+			
+			background-color:#595757;
+			padding: 10px;
+			text-align: center;
+		    margin-bottom: 20px;
+		}
+		#bot_back{
+			
+			background-color:#555555;
+			padding: 10px;
+			margin-top: 20px;
+		}
+		
+		td {
+			
+			text-align: center;
+			color: #6699FF;
+		    padding: 10px;
+			
+		}
+		
+		a{
+			color: #4bf;
+			text-decoration: underline;
+		}
+		.content{
+		
+			
+			padding:20px;
+		}
+		.img{
+			margin: 20px;
+			
+			text-align: center;
+		}
+		img {
+			alt : 'loading';
+			max-width : 800px;
+		}
+		
+		.para{
+		    text-indent: 2em;
+			
+		}
+		
+		
+	</style>
+	
+	
 	</head>
-<body>
-	<h1>RGB LED Control with BlueTooth</h1>
-	<h2>with BTMCU the app for Android</h2>
+<body style="text-align: center">
+	<div style="max-width: 700px; margin: auto" align="left">
+
+<div id="top_back">
+  <h1 style="font-size: 36px;color: #fff">Bluetooth Controlled RGB LED</h1>
+	<div class="logo">
+ 	<a href="https://play.google.com/store/apps/details?id=xnj.lazydog.btcontroller" target="_blank" id="install"><img src="rgbled_logo.jpg" width="70%">
+ 	<div>INSTALL APP</div></a> 
+  </div>
+	</div>	
+		
+<div><h1>Reqiured Components</h1></div>
+		
+<div class="img">
+	<img src="total_real.jpg" width="90%">
+	  </div>
+		
+<p>
+      <ul>
+		<li>Bluetooth module HC-05/HC-06</li>
+	    <li>RGB LED - 4pins</li>
+		<li>Arduino board</li>
+		<li>Android phone</li>
+	  </ul>
+		</p>
+	<br>
+	
+<div><h1>Hardware connection</h1></div>	
+
+	<div class="img">
+	  <img src="sche.jpg" width="90%">
+		</div>
+	
+	<div class="img">
+		<img src="led4pin.jpg" width="70%"> </div>
+		
+	
+	<div><h1>Arduino code</h1></div>	
+	<h2><b>1.Download </b><a href="https://github.com/XieLazyDog/Arduino_ValuePack/blob/master/src.cpp" target="_blank">code template</a></h2>
+	<br>
+	<h2><b>2.Define data packet structure</b></h2>
+	<div class="img"><img src="definestruct.jpg" width="70%"> </div>
+	
+	<p class="para">You'll find a few lines of code at the head of the code template that defines the structure of the packet between the microcontroller and the phone.</p>
+	
+	<p class="para">We have to control 3 leds, so we define 3 bool variables in the code. Other code is related to the underlying communication, please keep it as it is.</p>
+	
+
+	<div class="img"><img src="struct.jpg" width="60%"> </div>
+	
+	<p class="para">There are already two structure defined in code template as shown above. The txPack and rxPack. You can directly access the variables in the structure by the form like 'var = rxPack.bools[0]'</p>
+	<br>
+	
+	<h2><b>3.Code</b></h2>
+	<div class="img"><img src="code.jpg" width="70%"> </div>
+	
+	<p style="font-size: 18px"><b>There are only three functions to use to implement a complete data transfer.</b></p>
+	<p><ul>
+	<br>
+	<li><b>void initPack(Serialx,int baudrate)</b> <br>Initialize the working conditions of the communication. You need to specify which serial port to use and the baud rate of the serial port. 'Serial' is correct if you connect bluetooth module with pin tx0/rx0. If you use pin tx1/rx1, you should use 'Serial1' as shown in example.</li>
+	<br>
+	<li><b>bool recvPack()</b> <br>Try to receive data from your phone and return true if data is received. You need to call this function at a short interval.</li>
+	<br>
+	<li><b>void sendPack()</b> <br>If you have sensor data to send to your phone, you will need to call sendPack() each time you change the txPack variable.</li>
+	</ul>
+	</p>
 	
 	
+	<div><h1>BTMCU Configration</h1></div>	
+	
+	<h2><b>1.Create a project</b></h2>
+	
+	
+	
+	<div class="img"><img src="bt_1.jpg" width="50%"> </div>
+	
+	
+	<p class="para">The first step is create a project.<a href="https://xielazydog.github.io/pages/btmcu/btmcu_pro.html#newpro">How to create a project?</a></p>
+		
+	<h2><b>2.Configure communication parameters</b></h2>
+	
+	
+	<div class="img"><img src="bt_2.jpg" width="50%"> </div>
+	
+	
+	<p class="para">Then you need to define the packet structure in communication page.<a href="https://xielazydog.github.io/pages/btmcu/btmcu_pro.html#commpara">How to configure?</a></p>
+	
+	<h2><b>3.Edit widgets</b></h2>
+	
+	<div class="img"><img src="bt_3.jpg" width="50%"> </div>
+	
+		<p class="para">Create three switch to control RGB LED.<a href="https://xielazydog.github.io/pages/btmcu/btmcu_pro.html#widgets">How to edit?</a></p>
+	
+	<h2><b>4.Scan and connect</b></h2>
+	
+	<div class="img"><img src="bt_4.jpg" width="50%"> </div>
+	
+	<p class="para">Configuration is finished. Scan and connect the bluetooth device.<a href="https://xielazydog.github.io/pages/btmcu/btmcu_pro.html#howconnect">How to connect?</a></p>
+	
+	<h2><b>5.Run project</b></h2>
+	
+	<div class="img"><img src="bt_5.jpg" width="50%"> </div>
+	
+	<p class="para">Finally, run the project.<a href="https://xielazydog.github.io/pages/btmcu/btmcu_pro.html#run">How to run?</a></p>
+	<br>
+	<p class="para">Hope you can make amazing works.</p>
+	
+	<div style="height: 30px"></div>
+	
+	
+	<div id="bot_back">
+	 <div>
+      <p>
+      <h1 style="color: #fff">My Apps</h1>
+      </p>
+		
+    </div>
+
+
+    <div>
+		
+		<table style="text-align: center">
+		<tr>
+			<td>
+			<a href="https://play.google.com/store/apps/details?id=xnj.lazydog.usbserialport" target="_blank" style="color: #fff">
+			<img src="../myapps_logo/spu.png" width="30%" alt=""/><br>Serial Port
+			</a>	
+			</td>
+			<td>
+			<a href="https://play.google.com/store/apps/details?id=ls.xnj.meetingmachine" target="_blank" style="color: #fff">	
+			 <img src="../myapps_logo/usbcam.png" width="30%" alt=""/><br>USB Camera
+			  </a>
+			</td>
+			<td>
+				<a href="https://play.google.com/store/apps/details?id=xnj.lazydog.firefly" target="_blank" style="color: #fff">
+			 <img src="../myapps_logo/light.png" width="30%"  alt=""/><br>Flashlight
+				</a>
+			</td>
+		  </tr>
+		</table>	
+</div>
+</div>
+	</div>
+
 </body>
 </html>
