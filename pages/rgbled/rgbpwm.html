@@ -3,9 +3,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta charset="UTF-8">
-<title>RGB-LED</title>
 	
-	<style>
+	<title>PWM RGB LED</title>
+    <style>
 	
 	    #install
 		{
@@ -80,17 +80,16 @@
 		    text-indent: 2em;
 			
 		}
-		
-		
 	</style>
 	
-	
-	</head>
-<body style="text-align: center">
+</head>
+
+
+	<body style="text-align: center">
 	<div style="max-width: 700px; margin: auto" align="left">
 
 <div id="top_back">
-  <h1 style="font-size: 36px;color: #fff">Bluetooth Controlled RGB LED</h1>
+	<h1 style="font-size: 36px;color: #fff">Bluetooth Controlled PWM RGB LED</h1>
 	<div class="logo">
  	<a href="https://play.google.com/store/apps/details?id=xnj.lazydog.btcontroller" target="_blank" id="install"><img src="rgbled_logo.jpg" width="70%">
  	<div>INSTALL APP</div></a> 
@@ -100,18 +99,17 @@
 <div><h1>Reqiured Components</h1></div>
 		
 <div class="img">
-	<img src="total_real.jpg" width="90%">
-	  </div>
-	
+	<img src="real_pwm.jpg" width="90%"></div>
 		
 <p>
       <ul>
 		<li>Bluetooth module HC-05/HC-06</li>
 	    <li>RGB LED - 4pins</li>
 		<li>Arduino board</li>
+		<li>Bread board</li> 
 		<li>Android phone</li>
-		 <li>220Ω resistor * 2</li>
-		  <li>150Ω resistor * 1</li>
+		<li>220Ω resistor * 2 or 1kΩ potentiometer * 2</li>
+		<li>150Ω resistor * 1 or 1kΩ potentiometer * 1</li> 
 	  </ul>
 		</p>
 	<br>
@@ -119,30 +117,29 @@
 <div><h1>Hardware connection</h1></div>	
 
 	<div class="img">
-	  <img src="sche.jpg" width="90%"></div>
+	  <img src="sche_pwm.jpg" width="90%"></div>
 	
 	<p class="para">The digital output voltage of Arduino is 5V, and the normal working voltage of our RGBLED is about 2~3V.So we need resistors to limit the current.Since different colors of led have different brightness at the same current, we need to give different resistances.</p>
 		
 	
 	<div><h1>Arduino code</h1></div>	
-	<h2><b>1.Download </b><a href="https://github.com/XieLazyDog/Arduino_ValuePack/blob/master/src.cpp" target="_blank">code template</a></h2>
+	<h2><b>1.Download </b><a href="https://github.com/XieLazyDog/Arduino_ValuePack/blob/master/src_pwm_rgb.cpp" target="_blank">code template</a></h2>
 	<br>
 	<h2><b>2.Define data packet structure</b></h2>
-	<div class="img"><img src="definestruct.jpg" width="70%"> </div>
-	
+	<div class="img"><img src="define_bytes.jpg" width="70%"> 		</div>
+																 
 	<p class="para">You'll find a few lines of code at the head of the code template that defines the structure of the packet between the microcontroller and the phone.</p>
 	
-	<p class="para">We have to control 3 leds, so we define 3 bool variables in the code. Other code is related to the underlying communication, please keep it as it is.</p>
+	<p class="para">We have to control 3 leds with pwm, so we define 3 byte variables in the code. Other code is related to the underlying communication, please keep it as it is.</p>
 	
 
 	<div class="img"><img src="struct.jpg" width="60%"> </div>
 	
-	<p class="para">There are already two structure defined in code template as shown above. The txPack and rxPack. You can directly access the variables in the structure by the form like 'var = rxPack.bools[0]'</p>
+	<p class="para">There are already two structure defined in code template as shown above. The txPack and rxPack. You can directly access the variables in the structure by the form like 'var = rxPack.bytes[0]'</p>
 	<br>
 	
 	<h2><b>3.Code</b></h2>
-	<div class="img"><img src="code.jpg" width="70%"> </div>
-	
+	<div class="img"><img src="code_pwm.jpg" width="70%"> </div>
 	<p style="font-size: 18px"><b>There are only three functions to use to implement a complete data transfer.</b></p>
 	<p><ul>
 	<br>
@@ -161,36 +158,39 @@
 	
 	
 	
-	<div class="img"><img src="bt_1.jpg" width="50%"> </div>
+	<div class="img"><img src="btpwm_1.jpg" width="50%"> </div>
 	
 	
-	<p class="para">The first step is create a project.<a href="https://xielazydog.github.io/pages/btmcu/btmcu_pro.html#newpro">How to create a project?</a></p>
+	<p class="para">The first step is to create a project.<a href="https://xielazydog.github.io/pages/btmcu/btmcu_pro.html#newpro" target="_blank">How to create a project?</a></p>
 		
 	<h2><b>2.Configure communication parameters</b></h2>
 	
 	
-	<div class="img"><img src="bt_2.jpg" width="50%"> </div>
-	
-	
-	<p class="para">Then you need to define the packet structure in communication page.<a href="https://xielazydog.github.io/pages/btmcu/btmcu_pro.html#commpara">How to configure?</a></p>
+	<div class="img"><img src="btpwm_2.jpg" width="50%"> </div>
+	<p class="para">Then you need to define the packet structure in communication page.<a href="https://xielazydog.github.io/pages/btmcu/btmcu_pro.html#commpara" target="_blank">How to configure?</a></p>
 	
 	<h2><b>3.Edit widgets</b></h2>
 	
-	<div class="img"><img src="bt_3.jpg" width="50%"> </div>
+	<div class="img"><img src="btpwm_3.jpg" width="50%"> </div>
+	<p class="para">Create three seekbars to control RGB LED. One thing to notic is the range of byte. The range of byte is -128~127 in BTMCU, but we want to get 0~255 in Arduino. The first solution is to narrow the range of seekbar to 0~127 then '*2' in Arduino program. The other solution is to '+128' in Arduino program to get the value in 0-255.</p>
+			
+	<div class="img"><img src="seekbar_range.jpg" width="50%"> </div>
 	
-		<p class="para">Create three switch to control RGB LED.<a href="https://xielazydog.github.io/pages/btmcu/btmcu_pro.html#widgets">How to edit?</a></p>
+	<p class="para">I chose the first way, so I need to modify the value range of the seekbar. <a href="https://xielazydog.github.io/pages/btmcu/btmcu_pro.html#widgets" target="_blank">How to edit?</a></p>
+
+	
 	
 	<h2><b>4.Scan and connect</b></h2>
 	
 	<div class="img"><img src="bt_4.jpg" width="50%"> </div>
 	
-	<p class="para">Configuration is finished. Scan and connect the bluetooth device.<a href="https://xielazydog.github.io/pages/btmcu/btmcu_pro.html#howconnect">How to connect?</a></p>
+	<p class="para">Configuration is finished. Scan and connect the bluetooth device.<a href="https://xielazydog.github.io/pages/btmcu/btmcu_pro.html#howconnect" target="_blank">How to connect?</a></p>
 	
 	<h2><b>5.Run project</b></h2>
 	
-	<div class="img"><img src="bt_5.jpg" width="50%"> </div>
+	<div class="img"><img src="btpwm_5.jpg" width="50%"> </div>
 	
-	<p class="para">Finally, run the project.<a href="https://xielazydog.github.io/pages/btmcu/btmcu_pro.html#run">How to run?</a></p>
+	<p class="para">Finally, run the project.<a href="https://xielazydog.github.io/pages/btmcu/btmcu_pro.html#run" target="_blank">How to run?</a></p>
 	<br>
 	<p class="para">Hope you can make amazing works.</p>
 	
@@ -231,5 +231,6 @@
 </div>
 	</div>
 
-</body>
+	
+	</body>
 </html>
